@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/OpenGL/.vs/OpenGL
+/OpenGL/Bin/Intermediate
+/OpenGL/Bin/x64/Debug
+/OpenGL/Bin/Win32/Debug
