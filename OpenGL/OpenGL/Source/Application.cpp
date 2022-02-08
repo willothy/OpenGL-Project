@@ -43,6 +43,7 @@ int main(void) {
 
     {
         float positions[] = {
+<<<<<<< Updated upstream
             -0.5f, -0.5f, 0.0f, 0.0f, // Position
             1.0f, 0.0f, 0.0f, 1.0f, // Color
             0.5f, -0.5f, 1.0f, 0.0f, // Position
@@ -51,6 +52,16 @@ int main(void) {
             0.0f, 0.0f, 1.0f, 1.0f // Color
             -0.5f, 0.5f, 0.0f, 1.0f, // Position
             1.0f, 1.0f, 1.0f, 1.0f // Color
+=======
+            -0.5f, -0.5f, 0.0f, 0.0f,
+            1.0f, 0.0f, 0.0f, 1.0f,
+            0.5f, -0.5f, 1.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 1.0f,
+            0.5f, 0.5f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            -0.5f, 0.5f, 0.0f, 1.0f,
+            1.0f, 0.0f, 1.0f, 1.0f,
+>>>>>>> Stashed changes
         };
 
         unsigned int indices[] = {
