@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Basic.shader" />
+    <None Include="Resources\Shaders\VertexColor.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Renderer.h">

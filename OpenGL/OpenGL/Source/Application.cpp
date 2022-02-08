@@ -15,6 +15,9 @@
 #include "VertexBufferLayout.h"
 #include "Texture.h"
 
+// Simply use VertexColor or Basic. Currently, parameters for both are implemented so even though the layouts are different they both work. 
+const std::string SHADER { "VertexColor" };
+
 int main(void) {
     GLFWwindow* window;
 
@@ -44,9 +47,13 @@ int main(void) {
     {
         float positions[] = {
             -0.5f, -0.5f, 0.0f, 0.0f,
+            1.0f, 0.0f, 0.0f, 1.0f, // Color
             0.5f, -0.5f, 1.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 1.0f, // Color
             0.5f, 0.5f, 1.0f, 1.0f,
-            -0.5f, 0.5f, 0.0f, 1.0f
+            0.0f, 0.0f, 1.0f, 1.0f, // Color
+            -0.5f, 0.5f, 0.0f, 1.0f,
+            1.0f, 0.0f, 1.0f, 1.0f, // Color
         };
 
         unsigned int indices[] = {
@@ -62,12 +69,13 @@ int main(void) {
         //GLCall(glBindVertexArray(vao));
 
         VertexArray va;
-        VertexBuffer vb(positions, 4 * 4 * sizeof(float));
+        VertexBuffer vb(positions, 4 * 8 * sizeof(float));
         
 
         VertexBufferLayout layout;
         layout.Push<float>(2);
         layout.Push<float>(2);
+        layout.Push<float>(4);
         va.AddBuffer(vb, layout);
         
         //GLCall(glEnableVertexAttribArray(0));
@@ -75,7 +83,7 @@ int main(void) {
 
         IndexBuffer ib(indices, 6);
 
-        Shader shader("Resources/Shaders/Basic.shader");
+        Shader shader("Resources/Shaders/" + SHADER + ".shader");
         shader.Bind();
 
         // Must have shader bound to set uniforms
@@ -84,6 +92,7 @@ int main(void) {
         Texture texture("Resources/Textures/rock.png");
         texture.Bind();
         shader.SetUniform1i("u_Texture", 0);
+        
 
         va.Unbind();
         vb.Unbind();
@@ -101,7 +110,7 @@ int main(void) {
             renderer.Clear();
 
             shader.Bind();
-            shader.SetUniform4f("u_Color", r, 0.3f, 0.2f, 1.0f);
+            //shader.SetUniform4f("u_Color", r, 0.3f, 0.2f, 1.0f);
 
             renderer.Draw(va, ib, shader);
 
