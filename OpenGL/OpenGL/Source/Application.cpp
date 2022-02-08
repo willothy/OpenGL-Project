@@ -15,6 +15,9 @@
 #include "VertexBufferLayout.h"
 #include "Texture.h"
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 int main(void) {
     GLFWwindow* window;
 
@@ -74,12 +77,16 @@ int main(void) {
         //GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0));
 
         IndexBuffer ib(indices, 6);
-
+        glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
         Shader shader("Resources/Shaders/Basic.shader");
         shader.Bind();
 
+        
+
         // Must have shader bound to set uniforms
         shader.SetUniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
+
+        shader.SetUniformMat4f("u_MVP", proj);
 
         Texture texture("Resources/Textures/rock.png");
         texture.Bind();
